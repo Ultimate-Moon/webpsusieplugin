@@ -78,6 +78,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\spi00in.h" />
+    <ClInclude Include="..\webp\decode.h" />
+    <ClInclude Include="..\webp\demux.h" />
+    <ClInclude Include="..\webp\encode.h" />
+    <ClInclude Include="..\webp\mux.h" />
+    <ClInclude Include="..\webp\mux_types.h" />
+    <ClInclude Include="..\webp\types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\spi00in.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
