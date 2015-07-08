@@ -47,13 +47,10 @@ int getDIBFromWebP(uint8_t *webpdata, long filesize, BITMAPFILEHEADER *fileHeade
 	int width, height;
 	unsigned long bitLength, bitWidth;
 	uint8_t *bitmapdata;
-	*data = WebPDecodeBGR(webpdata, filesize, &width, &height);
-	if ((width*3) % 4 == 0) {
-		bitLength = width*3;
-	} else {
-		bitLength = width*3+(4-(width*3)%4);
-	}
-	bitWidth = width*3;
+	*data = WebPDecodeBGRA(webpdata, filesize, &width, &height);
+	bitWidth = width * 4;
+	bitLength = bitWidth;
+	
 	bitmapdata = (uint8_t*)malloc(sizeof(uint8_t)*bitLength*height);
 	memset(bitmapdata, '\0', bitLength*height);
 	for (int i=0;i<height;i++) {
@@ -74,7 +71,7 @@ int getDIBFromWebP(uint8_t *webpdata, long filesize, BITMAPFILEHEADER *fileHeade
 	infoHeader->biWidth = width;
 	infoHeader->biHeight = height;
 	infoHeader->biPlanes = 1;
-	infoHeader->biBitCount = 24;
+	infoHeader->biBitCount = 32;
 	infoHeader->biCompression = 0;
 	infoHeader->biSizeImage = fileHeader->bfSize;
 	infoHeader->biXPelsPerMeter = infoHeader->biYPelsPerMeter = 0;
@@ -116,7 +113,7 @@ int GetPictureInfoEx(long datasize, char *data, struct PictureInfo *lpInfo)
 	lpInfo->height		= height;
 	lpInfo->x_density	= 0;
 	lpInfo->y_density	= 0;
-	lpInfo->colorDepth	= 24;
+	lpInfo->colorDepth	= 32;
 	lpInfo->hInfo		= NULL;
 
 	return SPI_ALL_RIGHT;
@@ -160,7 +157,7 @@ int GetPictureEx(long datasize, HANDLE *pHBInfo, HANDLE *pHBm,
 	pinfo->bmiHeader.biWidth			= infoHeader.biWidth;
 	pinfo->bmiHeader.biHeight			= infoHeader.biHeight;
 	pinfo->bmiHeader.biPlanes			= 1;
-	pinfo->bmiHeader.biBitCount			= 24;
+	pinfo->bmiHeader.biBitCount			= 32;
 	pinfo->bmiHeader.biCompression		= BI_RGB;
 	pinfo->bmiHeader.biSizeImage		= 0;
 	pinfo->bmiHeader.biXPelsPerMeter	= 0;
