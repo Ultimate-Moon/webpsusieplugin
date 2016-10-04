@@ -4,39 +4,39 @@
 #include <windows.h>
 
 /*-------------------------------------------------------------------------*/
-/* ‰æ‘œî•ñ\‘¢‘Ì */
+/* ç”»åƒæƒ…å ±æ§‹é€ ä½“ */
 /*-------------------------------------------------------------------------*/
 #pragma pack(push)
-#pragma pack(1) //\‘¢‘Ì‚Ìƒƒ“ƒo‹«ŠE‚ð1ƒoƒCƒg‚É‚·‚é
+#pragma pack(1) //æ§‹é€ ä½“ã®ãƒ¡ãƒ³ãƒå¢ƒç•Œã‚’1ãƒã‚¤ãƒˆã«ã™ã‚‹
 typedef struct PictureInfo {
-	long left,top;		/* ‰æ‘œ‚ð“WŠJ‚·‚éˆÊ’u */
-	long width;			/* ‰æ‘œ‚Ì•(pixel) */
-	long height;		/* ‰æ‘œ‚Ì‚‚³(pixel) */
-	WORD x_density;		/* ‰æ‘f‚Ì…•½•ûŒü–§“x */
-	WORD y_density;		/* ‰æ‘f‚Ì‚’¼•ûŒü–§“x */
-	short colorDepth;	/* ‰æ‘f“–‚½‚è‚Ìbit” */
-	HLOCAL hInfo;		/* ‰æ‘œ“à‚ÌƒeƒLƒXƒgî•ñ */
+	long left,top;		/* ç”»åƒã‚’å±•é–‹ã™ã‚‹ä½ç½® */
+	long width;			/* ç”»åƒã®å¹…(pixel) */
+	long height;		/* ç”»åƒã®é«˜ã•(pixel) */
+	WORD x_density;		/* ç”»ç´ ã®æ°´å¹³æ–¹å‘å¯†åº¦ */
+	WORD y_density;		/* ç”»ç´ ã®åž‚ç›´æ–¹å‘å¯†åº¦ */
+	short colorDepth;	/* ç”»ç´ å½“ãŸã‚Šã®bitæ•° */
+	HLOCAL hInfo;		/* ç”»åƒå†…ã®ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ± */
 } PictureInfo;
 #pragma pack(pop)
 
 /*-------------------------------------------------------------------------*/
-/* ƒGƒ‰[ƒR[ƒh */
+/* ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ */
 /*-------------------------------------------------------------------------*/
-#define SPI_NO_FUNCTION			-1	/* ‚»‚Ì‹@”\‚ÍƒCƒ“ƒvƒŠƒƒ“ƒg‚³‚ê‚Ä‚¢‚È‚¢ */
-#define SPI_ALL_RIGHT			0	/* ³íI—¹ */
-#define SPI_ABORT				1	/* ƒR[ƒ‹ƒoƒbƒNŠÖ”‚ª”ñ0‚ð•Ô‚µ‚½‚Ì‚Å“WŠJ‚ð’†Ž~‚µ‚½ */
-#define SPI_NOT_SUPPORT			2	/* –¢’m‚ÌƒtƒH[ƒ}ƒbƒg */
-#define SPI_OUT_OF_ORDER		3	/* ƒf[ƒ^‚ª‰ó‚ê‚Ä‚¢‚é */
-#define SPI_NO_MEMORY			4	/* ƒƒ‚ƒŠ[‚ªŠm•Ûo—ˆ‚È‚¢ */
-#define SPI_MEMORY_ERROR		5	/* ƒƒ‚ƒŠ[ƒGƒ‰[ */
-#define SPI_FILE_READ_ERROR		6	/* ƒtƒ@ƒCƒ‹ƒŠ[ƒhƒGƒ‰[ */
-#define	SPI_WINDOW_ERROR		7	/* ‘‹‚ªŠJ‚¯‚È‚¢ (”ñŒöŠJ‚ÌƒGƒ‰[ƒR[ƒh) */
-#define SPI_OTHER_ERROR			8	/* “à•”ƒGƒ‰[ */
-#define	SPI_FILE_WRITE_ERROR	9	/* ‘‚«ž‚ÝƒGƒ‰[ (”ñŒöŠJ‚ÌƒGƒ‰[ƒR[ƒh) */
-#define	SPI_END_OF_FILE			10	/* ƒtƒ@ƒCƒ‹I’[ (”ñŒöŠJ‚ÌƒGƒ‰[ƒR[ƒh) */
+#define SPI_NO_FUNCTION			-1	/* ãã®æ©Ÿèƒ½ã¯ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒˆã•ã‚Œã¦ã„ãªã„ */
+#define SPI_ALL_RIGHT			0	/* æ­£å¸¸çµ‚äº† */
+#define SPI_ABORT				1	/* ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ãŒéž0ã‚’è¿”ã—ãŸã®ã§å±•é–‹ã‚’ä¸­æ­¢ã—ãŸ */
+#define SPI_NOT_SUPPORT			2	/* æœªçŸ¥ã®ãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆ */
+#define SPI_OUT_OF_ORDER		3	/* ãƒ‡ãƒ¼ã‚¿ãŒå£Šã‚Œã¦ã„ã‚‹ */
+#define SPI_NO_MEMORY			4	/* ãƒ¡ãƒ¢ãƒªãƒ¼ãŒç¢ºä¿å‡ºæ¥ãªã„ */
+#define SPI_MEMORY_ERROR		5	/* ãƒ¡ãƒ¢ãƒªãƒ¼ã‚¨ãƒ©ãƒ¼ */
+#define SPI_FILE_READ_ERROR		6	/* ãƒ•ã‚¡ã‚¤ãƒ«ãƒªãƒ¼ãƒ‰ã‚¨ãƒ©ãƒ¼ */
+#define	SPI_WINDOW_ERROR		7	/* çª“ãŒé–‹ã‘ãªã„ (éžå…¬é–‹ã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰) */
+#define SPI_OTHER_ERROR			8	/* å†…éƒ¨ã‚¨ãƒ©ãƒ¼ */
+#define	SPI_FILE_WRITE_ERROR	9	/* æ›¸ãè¾¼ã¿ã‚¨ãƒ©ãƒ¼ (éžå…¬é–‹ã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰) */
+#define	SPI_END_OF_FILE			10	/* ãƒ•ã‚¡ã‚¤ãƒ«çµ‚ç«¯ (éžå…¬é–‹ã®ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰) */
 
 /*-------------------------------------------------------------------------*/
-/* '00IN'ŠÖ”‚Ìƒvƒƒgƒ^ƒCƒvéŒ¾ */
+/* '00IN'é–¢æ•°ã®ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€ */
 /*-------------------------------------------------------------------------*/
 typedef int (CALLBACK *SPI_PROGRESS)(int, int, long);
 	int __declspec(dllexport) __stdcall GetPluginInfo
