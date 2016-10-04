@@ -57,11 +57,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;WEBPSUSIEPLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\libwebp\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)libwebp\output\debug-static\$(PlatformTarget)\lib\libwebp_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>$(SolutionDir)spi00in.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
@@ -75,24 +76,26 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;WEBPSUSIEPLUGIN_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>..\libwebp\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>$(SolutionDir)libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)libwebp\output\release-static\$(PlatformTarget)\lib\libwebp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>$(SolutionDir)spi00in.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\libwebp\src\webp\decode.h" />
+    <ClInclude Include="..\libwebp\src\webp\demux.h" />
+    <ClInclude Include="..\libwebp\src\webp\encode.h" />
+    <ClInclude Include="..\libwebp\src\webp\format_constants.h" />
+    <ClInclude Include="..\libwebp\src\webp\mux.h" />
+    <ClInclude Include="..\libwebp\src\webp\mux_types.h" />
+    <ClInclude Include="..\libwebp\src\webp\types.h" />
     <ClInclude Include="..\spi00in.h" />
-    <ClInclude Include="..\webp\decode.h" />
-    <ClInclude Include="..\webp\demux.h" />
-    <ClInclude Include="..\webp\encode.h" />
-    <ClInclude Include="..\webp\mux.h" />
-    <ClInclude Include="..\webp\mux_types.h" />
-    <ClInclude Include="..\webp\types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp" />
